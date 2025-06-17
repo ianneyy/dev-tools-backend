@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import mysql.connector
 import google.generativeai as genai
 import os
-
+from flask_cors import CORS
 
 gemini_key = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=gemini_key)
@@ -10,7 +10,7 @@ genai.configure(api_key=gemini_key)
 
 
 app = Flask(__name__)
-
+CORS(app)
 # Connect to Aiven MySQL with SSL
 
 def generate_description(name):
